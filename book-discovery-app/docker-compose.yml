@@ -1,0 +1,43 @@
+version: '3.1'
+services:
+  book-management-service:
+    image: bc5-backend
+    depends_on:
+      - postgresql
+    ports:
+      - "8080:8080"
+    environment:
+      POSTGRES_HOST: postgresql
+      POSTGRES_PORT: 5432
+      POSTGRES_DB: bda
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+    networks:
+      - backend
+
+  postgresql:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: bda
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+    volumes:
+      - postgresql-database-data-volume:/var/lib/postgresql/data
+    networks:
+      - backend
+
+  frontend:
+    image: bc5-frontend
+    ports:
+      - "3000:80"
+    networks:
+      - frontend
+
+volumes:
+  postgresql-database-data-volume:
+
+
+
+networks:
+  backend:
+  frontend:
