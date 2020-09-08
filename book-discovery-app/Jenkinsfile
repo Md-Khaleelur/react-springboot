@@ -29,7 +29,7 @@ pipeline {
                 }
         stage('Building Docker Image for frontend') {
               steps{
-                dir("book-discovery-app/bc-5-backend/book-management-service"){
+                dir("book-discovery-app/bc-5-frontend"){
                       script {
                                  dockerImage = docker.build frontendRegistry + ":$BUILD_NUMBER"
                              }
