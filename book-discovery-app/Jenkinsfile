@@ -25,7 +25,7 @@ pipeline {
             steps {
                 dir('book-discovery-app/bc-5-backend/book-management-service') {
 
-                 sh "docker build . -t "+registry+"book-discovery-backend:$BUILD_NUMBER -t "+registry+"book-discovery-backend:latest"
+                 sh "docker build . -t "+backendRegistry+"book-discovery-backend:$BUILD_NUMBER -t "+backendRegistry+"book-discovery-backend:latest"
 
                 }
             }
@@ -53,7 +53,7 @@ pipeline {
             steps {
                 dir('book-discovery-app/bc-5-frontend') {
 
-                        sh "docker build . -t "+registry+"book-discovery-frontend:$BUILD_NUMBER -t "+registry+"book-discovery-frontend:latest"
+                        sh "docker build . -t "+frontendRegistry+"book-discovery-frontend:$BUILD_NUMBER -t "+frontendRegistry+"book-discovery-frontend:latest"
 
                 }
             }
