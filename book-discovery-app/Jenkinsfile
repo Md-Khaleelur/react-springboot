@@ -54,7 +54,6 @@ pipeline {
             steps {
                 dir('book-discovery-app/bc-5-frontend') {
 
-                        dockerImage = docker.build frontendRegistry + ":$BUILD_NUMBER"
                         sh "docker build . -t "+registry+"book-discovery-frontend:$BUILD_NUMBER -t "+registry+"book-discovery-frontend:latest"
 
                 }
