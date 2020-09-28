@@ -35,8 +35,8 @@ pipeline {
             steps {
 
 				sh 'echo ${GH_TOKEN} | docker login docker.pkg.github.com -u ${GH_USERNAME} --password-stdin'
-                sh 'docker push ' + backendRegistry + ":$BUILD_NUMBER"
-                sh 'docker push ' + registry + "book-discovery-backend:latest"
+                sh 'docker push ' + backendRegistry + "book-discovery-frontend:$BUILD_NUMBER"
+                sh 'docker push ' + backendRegistry + "book-discovery-backend:latest"
             }
         }
         stage('Build frontend') {
@@ -65,9 +65,9 @@ pipeline {
             steps {
 
 				sh 'echo ${GH_TOKEN} | docker login docker.pkg.github.com -u ${GH_USERNAME} --password-stdin'
-                sh 'docker push ' + frontendRegistry + ":$BUILD_NUMBER"
-                sh 'docker push ' + registry + "book-discovery-frontend:$BUILD_NUMBER"
-                sh 'docker push ' + registry + "book-discovery-frontend:latest"
+
+                sh 'docker push ' + frontendRegistry + "book-discovery-frontend:$BUILD_NUMBER"
+                sh 'docker push ' + frontendRegistry + "book-discovery-frontend:latest"
             }
         }
 
