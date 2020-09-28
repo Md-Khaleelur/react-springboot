@@ -33,7 +33,6 @@ pipeline {
         }
         stage('Deploy Docker Image for backend') {
             steps {
-
 				sh 'echo ${GH_TOKEN} | docker login docker.pkg.github.com -u ${GH_USERNAME} --password-stdin'
                 sh 'docker push ' + backendRegistry + "book-discovery-frontend:$BUILD_NUMBER"
                 sh 'docker push ' + backendRegistry + "book-discovery-backend:latest"
@@ -63,9 +62,7 @@ pipeline {
         }
         stage('Deploy Docker Image for frontend') {
             steps {
-
 				sh 'echo ${GH_TOKEN} | docker login docker.pkg.github.com -u ${GH_USERNAME} --password-stdin'
-
                 sh 'docker push ' + frontendRegistry + "book-discovery-frontend:$BUILD_NUMBER"
                 sh 'docker push ' + frontendRegistry + "book-discovery-frontend:latest"
             }
