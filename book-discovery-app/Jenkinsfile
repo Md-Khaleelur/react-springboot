@@ -26,7 +26,7 @@ pipeline {
             steps {
                 dir('book-discovery-app/bc-5-backend/book-management-service') {
 
-                        sh "docker build . -t "+registry+"book-discovery-backend:$BUILD_NUMBER -t "+registry+"book-discovery-backend:latest"
+                 sh "docker build . -t "+registry+"book-discovery-backend:$BUILD_NUMBER -t "+registry+"book-discovery-backend:latest"
 
                 }
             }
@@ -36,6 +36,7 @@ pipeline {
 
 				sh 'echo ${GH_TOKEN} | docker login docker.pkg.github.com -u ${GH_USERNAME} --password-stdin'
                 sh 'docker push ' + backendRegistry + ":$BUILD_NUMBER"
+                sh 'docker push ' + registry + "book-discovery-backend:latest"
             }
         }
         stage('Build frontend') {
