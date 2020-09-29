@@ -1,6 +1,7 @@
 logs
 *.log
 .DS_Store
+*.env
 
 # Runtime data
 pids
