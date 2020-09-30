@@ -73,5 +73,6 @@ pipeline {
         				sh "helm install bdiscovery-helm bdiscovery-0.1.0.tgz"
         		}
             }
+        }
     }
 }
