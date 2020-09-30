@@ -1,0 +1,18 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: {{.Values.bdiscovery.ingress.name}}
+  annotations:
+      ingress.kubernetes.io/rewrite-target: {{.Values.bdiscovery.ingress.annotations.target}}
+spec:
+  rules:
+    - http:
+        paths:
+        - path: {{.Values.bdiscovery.ingress.front_end.path}}
+          backend:
+            serviceName: {{.Values.bdiscovery.ingress.front_end.serviceName}}
+            servicePort: {{.Values.bdiscovery.ingress.front_end.servicePort}}
+        - path: {{.Values.bdiscovery.ingress.book_management.path}}
+          backend:
+            serviceName: {{.Values.bdiscovery.ingress.book_management.serviceName}}
+            servicePort: {{.Values.bdiscovery.ingress.book_management.servicePort}}

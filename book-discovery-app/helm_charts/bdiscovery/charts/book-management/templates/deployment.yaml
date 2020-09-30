@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{.Values.bdiscovery.deployment.name}}
+  labels:
+    name: {{.Values.bdiscovery.deployment.labels.name}}
+    app: {{.Values.bdiscovery.deployment.labels.app}}
+spec:
+  template:
+    metadata:
+      name: {{.Values.bdiscovery.deployment.spec.template.metadata.name}}
+      labels:
+        name: {{.Values.bdiscovery.deployment.spec.template.metadata.labels.name}}
+        app: {{.Values.bdiscovery.deployment.spec.template.metadata.labels.app}}
+    spec:
+      containers:
+        - name: {{.Values.bdiscovery.deployment.spec.template.spec.containers.name}}
+          image: {{.Values.bdiscovery.deployment.spec.template.spec.containers.image}}
+          envFrom:
+            - configMapRef:
+                name: {{.Values.bdiscovery.deployment.name}}
+          ports:
+            - containerPort: {{.Values.bdiscovery.deployment.spec.template.spec.containers.containerPort}}
+      imagePullSecrets:
+        - name: {{.Values.bdiscovery.deployment.spec.template.spec.imagePullSecrets.name}}
+  replicas: {{.Values.bdiscovery.deployment.spec.replicas}}
+  selector:
+    matchLabels:
+      name: {{.Values.bdiscovery.deployment.spec.selector.name}}
+      app: {{.Values.bdiscovery.deployment.spec.selector.app}}

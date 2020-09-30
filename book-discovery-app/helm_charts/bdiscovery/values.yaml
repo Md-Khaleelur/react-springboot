@@ -1,0 +1,15 @@
+bdiscovery:
+  app: bdiscovery
+  ingress:
+    name: ingress
+    annotations:
+      target: /
+    front_end:
+      path: /
+      serviceName: bdiscovery-front-end-service
+      servicePort: 80
+    book_management:
+      path: /books
+      serviceName: bdiscovery-book-management-service
+      servicePort: 8080
+    

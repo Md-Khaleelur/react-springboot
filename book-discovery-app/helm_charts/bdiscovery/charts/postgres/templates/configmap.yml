@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+    name: {{.Values.bdiscovery.deployment.name}}
+    labels:
+        name: {{.Values.bdiscovery.deployment.labels.name}}
+        app: {{.Values.bdiscovery.deployment.labels.app}}
+data:
+    POSTGRES_USERNAME: {{.Values.bdiscovery.deployment.data.POSTGRES_USERNAME}}
+    POSTGRES_PASSWORD: {{.Values.bdiscovery.deployment.data.POSTGRES_PASSWORD}}

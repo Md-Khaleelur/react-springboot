@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+    name: {{.Values.bdiscovery.service.name}}
+    labels:
+        name: {{.Values.bdiscovery.service.labels.name}}
+        app: {{.Values.bdiscovery.service.labels.app}}
+spec:
+    ports:
+        - port: {{.Values.bdiscovery.service.spec.port}}
+          targetPort: {{.Values.bdiscovery.service.spec.targetPort}}
+    selector:
+        name: {{.Values.bdiscovery.service.spec.selector.name}}
+        app: {{.Values.bdiscovery.service.spec.selector.app}}

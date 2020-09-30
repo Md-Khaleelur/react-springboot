@@ -1,0 +1,41 @@
+bdiscovery:
+  app: bdiscovery
+  
+  service:
+    name: bdiscovery-book-management-service
+    labels:
+      name: bdiscovery-book-management-service
+      app: bdiscovery
+    port: 8080
+    targetPort: 8080
+    selector:
+      name: bdiscovery-book-management-service
+      app: bdiscovery
+  deployment:
+    name: book-management-deployment
+    labels:
+      name: book-management-deployment
+      app: bdiscovery
+    spec:
+      template:
+        metadata:
+          name: bdiscovery-book-management-service
+          labels:
+            name: bdiscovery-book-management-service
+            app: bdiscovery
+        spec:
+          containers:
+            name: bdiscovery-book-management-service
+            image: docker.pkg.github.com/zemoso-int/devops-bootcamp-3/book-discovery-backend:latest
+            containerPort: 8080
+          imagePullSecrets: 
+            name: kubernetes
+      replicas: 1
+      selector:
+        name: bdiscovery-book-management-service
+        app: bdiscovery
+    data:
+      DB_URI: postgresql:5432
+      DB_NAME: bda
+      DB_USER: admin
+      DB_PASSWORD: admin

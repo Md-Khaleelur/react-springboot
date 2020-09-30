@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+    name: {{.Values.bdiscovery.deployment.name}}
+    labels:
+        name: {{.Values.bdiscovery.deployment.labels.name}}
+        app: {{.Values.bdiscovery.deployment.labels.app}}
+data:
+    DB_URI: {{.Values.bdiscovery.deployment.data.DB_URI}}
+    DB_NAME: {{.Values.bdiscovery.deployment.data.DB_NAME}}
+    DB_USER: {{.Values.bdiscovery.deployment.data.DB_USER}}
+    DB_PASSWORD: {{.Values.bdiscovery.deployment.data.DB_PASSWORD}}

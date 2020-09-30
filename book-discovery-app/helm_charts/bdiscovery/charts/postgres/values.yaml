@@ -1,0 +1,37 @@
+bdiscovery:
+  app: bdiscovery
+  service:
+    name: postgresql
+    labels:
+      name: postgres-service
+      app: bdiscovery
+    spec:
+      port: 5432
+      targetPort: 5432
+      selector:
+        name: postgresql
+        app: bdiscovery
+  deployment:
+    name: postgres-deployment
+    labels:
+      name: postgres-deployment
+      app: bdiscovery
+    spec:
+      template:
+        metadata:
+          name: postgresql
+          labels:
+            name: postgresql
+            app: bdiscovery
+        spec:
+          containers:
+            name: postgresql
+            image: postgres
+            containerPort: 5432
+      replicas: 1
+      selector:
+        name: postgresql
+        app: bdiscovery
+    data:
+      POSTGRES_USERNAME: admin
+      POSTGRES_PASSWORD: admin

@@ -1,0 +1,36 @@
+bdiscovery:
+  app: bdiscovery
+  
+  service:
+    name: bdiscovery-front-end-service
+    labels:
+      name: bdiscovery-front-end-service
+      app: bdiscovery
+    port: 80
+    targetPort: 80
+    selector:
+      name: bdiscovery-front-end-service
+      app: bdiscovery
+  deployment:
+    name: bdiscovery-front-end-deployment
+    labels:
+      name: bdiscovery-front-end-deployment
+      app: bdiscovery
+    spec:
+      template:
+        metadata:
+          name: bdiscovery-front-end-service
+          labels:
+            name: bdiscovery-front-end-service
+            app: bdiscovery
+        spec:
+          containers:
+            name: bdiscovery-front-end-service
+            image: docker.pkg.github.com/zemoso-int/devops-bootcamp-3/book-discovery-frontend:latest
+            containerPort: 80
+          imagePullSecrets: 
+            name: kubernetes
+      replicas: 1
+      selector:
+        name: bdiscovery-front-end-service
+        app: bdiscovery
