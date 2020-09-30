@@ -70,7 +70,7 @@ pipeline {
         	steps {
         		dir("book-discovery-app/helm_charts/") {
         				sh "helm package bdiscovery"
-        				sh "helm install bdiscovery-helm bdiscovery-0.1.0.tgz"
+        				sh "helm install bdiscovery bdiscovery-0.1.0.tgz"
         		}
             }
         }
